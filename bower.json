@@ -1,0 +1,23 @@
+{
+  "name": "recommendwp-shortcodes",
+  "authors": [
+    "RecommendWP"
+  ],
+  "description": "A collection of shortcodes for WordPress built using the Shortcodes Ultimate plugin API.",
+  "main": "",
+  "keywords": [
+    "shortcodes-ultimate",
+    "recommendwp",
+    "shortcode"
+  ],
+  "license": "GPLv3",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
