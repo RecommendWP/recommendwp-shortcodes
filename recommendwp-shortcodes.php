@@ -30,6 +30,13 @@ class RecommendWP_Shortcodes {
         foreach ( glob( plugin_dir_path( __FILE__ ) . "shortcodes/*.php" ) as $file ) {
             include_once $file;
         }
+
+        //* Mr Image Resize
+        if ( !function_exists( 'mr_image_resize' ) ) {
+            require_once( plugin_dir_path( __FILE__ ) . 'lib/mr-image-resize.php' );
+            require_once( plugin_dir_path( __FILE__ ) . 'lib/misc.php' );
+        }
+
     }
 
     public function rwps_register_groups( $groups ) {
