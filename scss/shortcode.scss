@@ -49,20 +49,20 @@ $displays: inline, inline-block, table, table-cell, flex, none, unset;
 
 //* Icons & Type Alignment Fix
 // @link http://snook.ca/archives/html_and_css/icons-and-type
-%icon-type {
+@mixin icon-type {
 	display: inline-block;
 	position: relative;
 	top: -0.1em;
 	vertical-align: middle;
 }
 
-%button {
-	text-transform: uppercase;
-	color: $button-color;
+@mixin button {
+	// text-transform: uppercase;
+	// color: $button-color;
 	display: inline-block;
 	margin-bottom: 0; // For input.btn
-	font-family: $button-font;
-	font-weight: $button-font-weight;
+	// font-family: $button-font;
+	// font-weight: $button-font-weight;
 	text-align: center;
 	vertical-align: middle;
 	touch-action: manipulation;
@@ -75,7 +75,7 @@ $displays: inline, inline-block, table, table-cell, flex, none, unset;
 
 /* ## Button Shortcode ------------------------------------------------------ */
 .rwps_button {
-	@extend %button;
+	@include button;
 	&.btn {
 		&-flat {
 			border-radius: 0px !important;
@@ -97,7 +97,7 @@ $displays: inline, inline-block, table, table-cell, flex, none, unset;
 /* ## Text Shortcode -------------------------------------------------------- */
 .rwps_text {
 	.icon-font, .icon-img {
-		@extend %icon-type;
+		@include icon-type;
 	}
 }
 
@@ -114,5 +114,22 @@ $displays: inline, inline-block, table, table-cell, flex, none, unset;
 		.hero-content {
 			
 		}
+	}
+}
+
+/* ## Panel Shortcode
+----------------------------------------------------------------------------- */
+.rwps_panel {
+	&.left-align {
+		.panel-icon {
+			float: left;
+			margin-right: 10px;
+		}
+		.panel-title, .panel-content {
+			padding-left: 80px;
+		}
+	}
+	&.basic {
+		text-align: center;
 	}
 }
