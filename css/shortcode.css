@@ -123,21 +123,12 @@
     display: unset;
 }
 
-.rwps_text .icon-font,
-.rwps_text .icon-img {
-    display: inline-block;
-    position: relative;
-    top: -0.1em;
-    vertical-align: middle;
-}
+
+/* ## Button Shortcode ------------------------------------------------------ */
 
 .rwps_button {
-    text-transform: uppercase;
-    color: #FF8400;
     display: inline-block;
     margin-bottom: 0;
-    font-family: "Open Sans", sans-serif;
-    font-weight: 700;
     text-align: center;
     vertical-align: middle;
     -ms-touch-action: manipulation;
@@ -148,9 +139,6 @@
     white-space: nowrap;
     line-height: 1;
 }
-
-
-/* ## Button Shortcode ------------------------------------------------------ */
 
 .rwps_button.btn-flat {
     border-radius: 0px !important;
@@ -174,10 +162,36 @@
 
 /* ## Text Shortcode -------------------------------------------------------- */
 
+.rwps_text .icon-font,
+.rwps_text .icon-img {
+    display: inline-block;
+    position: relative;
+    top: -0.1em;
+    vertical-align: middle;
+}
+
 
 /* ## Hero Shortcode -------------------------------------------------------- */
 
 .rwps_hero .hero-container .hero-title h2 {
     margin: 0;
     text-transform: uppercase;
+}
+
+
+/* ## Panel Shortcode
+----------------------------------------------------------------------------- */
+
+.rwps_panel.left-align .panel-icon {
+    float: left;
+    margin-right: 10px;
+}
+
+.rwps_panel.left-align .panel-title,
+.rwps_panel.left-align .panel-content {
+    padding-left: 80px;
+}
+
+.rwps_panel.basic {
+    text-align: center;
 }
