@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     cleancss = require('gulp-clean-css'),
     cmq = require('gulp-combine-mq'),
     prettify = require('gulp-jsbeautifier'),
+    uglify = require('gulp-uglify'),
     concatcss = require('gulp-concat-css'),
     del = require('del');
 
@@ -25,6 +26,20 @@ gulp.task('source:css', function(){
         .pipe(notify({ message: 'Source styles task complete' }));
 } );
 
+// Vendor JS
+gulp.task('vendor:js', function(){
+    return gulp.src([
+        'bower_components/veinjs/vein.js',
+        'bower_components/owl.carousel/dist/owl.carousel.js'
+    ])
+    .pipe(concat('vendor.js'))
+    .pipe(gulp.dest('temp/js'))
+    .pipe(rename({suffix: '.min'}))
+    .pipe(uglify())
+    .pipe(gulp.dest('js'))
+    .pipe(notify({ message: 'Vendor scripts task complete' }));
+});
+
 // Clean temp folder
 gulp.task('clean:temp', function(){
     return gulp.src('temp/*')
@@ -34,10 +49,12 @@ gulp.task('clean:temp', function(){
 // Default task
 gulp.task('default', ['clean:temp'], function() {
     gulp.start('source:css', 'watch');
+    gulp.start('vendor:js', 'watch');
 });
 
 // Watch
 gulp.task('watch', function() {
     // Watch .scss files
     gulp.watch(['scss/*.scss', 'sass/**/*.scss'], ['source:css']);
+    gulp.watch(['js/vendor/*.js'], ['vendor:js']);
 });
