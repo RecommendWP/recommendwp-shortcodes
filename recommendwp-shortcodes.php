@@ -9,18 +9,6 @@ License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 */
 
-// Check if Divi is installed
-register_activation_hook( __FILE__, 'rwps_up_activation_check' );
-function rwps_up_activation_check() {
-	$theme_info = get_theme_data( TEMPLATEPATH . '/style.css' );
-
-	// need to find a way to check active themes is MultiSites	- This does not work in new 3.1 network panel.
-	if( basename( TEMPLATEPATH ) != 'Divi' ) {
-		deactivate_plugins( plugin_basename( __FILE__ ) ); // Deactivate ourself
-		wp_die( 'Sorry, you can\'t activate unless you have installed Divi' );
-	}
-}
-
 class RecommendWP_Shortcodes {
     public function __construct() {
         add_action( 'wp_enqueue_scripts', array( $this, 'rwps_enqueue_scripts' ) );
@@ -34,7 +22,14 @@ class RecommendWP_Shortcodes {
         //* Mr Image Resize
         if ( !function_exists( 'mr_image_resize' ) ) {
             require_once( plugin_dir_path( __FILE__ ) . 'lib/mr-image-resize.php' );
+        }
+
+        if ( function_exists( 'mr_image_resize' ) )
             require_once( plugin_dir_path( __FILE__ ) . 'lib/misc.php' );
+
+        //* Color Luminance
+        if ( !function_exists( 'color_luminance' ) ) {
+            require_once( plugin_dir_path( __FILE__ ) . 'lib/luminance.php' );
         }
 
     }
@@ -51,10 +46,9 @@ class RecommendWP_Shortcodes {
             wp_register_style( 'rwp-shortcodes', plugin_dir_url( __FILE__ ) . 'css/shortcode.css' );
             wp_enqueue_style( 'rwp-shortcodes' );
 
-            // VeinJS
-            wp_register_script( 'veinjs', '//cdnjs.cloudflare.com/ajax/libs/veinjs/0.3/vein.min.js', array(), '0.3', true );
-
-            wp_enqueue_script( 'veinjs' );
+            // Vendor JS
+            wp_register_script( 'rwps-vendor-js', plugin_dir_url( __FILE__ ) . 'js/vendor.min.js', array( 'jquery' ), null, true );
+            wp_enqueue_script( 'rwps-vendor-js' );
 
             // Shortcode JS
             wp_register_script( 'rwps-shorcodes', plugin_dir_url( __FILE__ ) . 'js/shortcode.js', array( 'jquery' ), null, true );
@@ -63,3 +57,16 @@ class RecommendWP_Shortcodes {
 }
 
 new RecommendWP_Shortcodes();
+
+function rwps_light_or_dark( $color, $dark = '#000000', $light = '#ffffff' ) {
+
+    $hex = str_replace( '#', '', $color );
+
+    $c_r = hexdec( substr( $hex, 0, 2 ) );
+    $c_g = hexdec( substr( $hex, 2, 2 ) );
+    $c_b = hexdec( substr( $hex, 4, 2 ) );
+
+    $brightness = ( ( $c_r * 299 ) + ( $c_g * 587 ) + ( $c_b * 114 ) ) / 1000;
+
+    return $brightness > 155 ? $dark : $light;
+}
