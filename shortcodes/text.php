@@ -69,11 +69,12 @@ function rwps_register_text_shortcode( $shortcodes ) {
 			'alignment' => array(
 				'type' => 'select',
 				'values' => array(
+					'none' => 'None',
 					'center' => 'Center',
 					'left' => 'Left',
 					'right' => 'Right'
 				),
-				'default' => 'left',
+				'default' => 'none',
 				'name' => __( 'Alignment', 'rwps' ),
 				'desc' => __( 'Text alignment', 'rwps' )
 			),
@@ -144,7 +145,7 @@ function rwps_custom_text_shortcode( $atts, $content = null ) {
 	// if ( !empty( $atts['margin'] ) ) $styles['margin-bottom'] = $atts['margin'] . 'px';
 	if ( !empty( $atts['spacing'] ) ) $styles['letterSpacing'] = $atts['spacing'] . 'em';
 	if ( !empty( $atts['color'] ) ) $styles['color'] = $atts['color'];
-	if ( !empty( $atts['alignment'] ) ) $styles['textAlign'] = $atts['alignment'];
+	if ( $atts['alignment'] !== 'none' ) $styles['textAlign'] = $atts['alignment'];
 	
 	if ( $atts['margin'] == 0 ) {
 		$styles['marginBottom'] = '0px';
@@ -181,7 +182,7 @@ function rwps_custom_text_shortcode( $atts, $content = null ) {
 	// Built-in icon
 	if ( $atts['icon'] ) {
 		if ( strpos( $atts['icon'], 'icon:' ) !== false ) {
-			$atts['icon'] = '<i class="icon-font fa fa-' . trim( str_replace( 'icon:', '', $atts['icon'] ) ) . '" style="width:' . $atts['icon_size'] . 'px;height:' . $atts['icon_size'] . 'px;font-size:' . $atts['icon_size'] . 'px;color:' . $atts['icon_color'] . ';"></i>';
+			$atts['icon'] = '<span class="icon-font fa fa-' . trim( str_replace( 'icon:', '', $atts['icon'] ) ) . '" style="width:' . $atts['icon_size'] . 'px;height:' . $atts['icon_size'] . 'px;font-size:' . $atts['icon_size'] . 'px;color:' . $atts['icon_color'] . ';"></span>';
 			su_query_asset( 'css', 'font-awesome' );
 		}
 		// Uploaded icon
