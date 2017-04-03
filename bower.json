@@ -21,8 +21,8 @@
     "tests"
   ],
   "dependencies": {
-    "bourbon": "^4.2.7",
-    "owl.carousel": "^2.1.6",
+    "bourbon": "^4.3.4",
+    "owl.carousel": "^2.2.1",
     "veinjs": "*"
   }
 }
