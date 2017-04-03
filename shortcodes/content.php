@@ -159,8 +159,8 @@ function rwps_custom_box_shortcode( $atts, $content = null ) {
 		$styles['marginBottom'] = $atts['margin'] . 'px';
 	}
 
-	wp_enqueue_script( 'rwps-shorcodes' );
-	wp_localize_script( 'rwps-shorcodes', 'box' . $instance, $styles );
+	wp_enqueue_script( 'rwps-shortcodes' );
+	wp_localize_script( 'rwps-shortcodes', 'box' . $instance, $styles );
 
 	$attributes = array(
 		'id' => $selector,

@@ -211,8 +211,8 @@ function rwps_custom_button_shortcode( $atts, $content = null ) {
 		$styles['tabletSize'] = ($atts['size'] - $atts['size']/4) . 'px';
 	}
 
-	wp_enqueue_script( 'rwps-shorcodes' );
-	wp_localize_script( 'rwps-shorcodes', 'btn' . $instance, $styles );
+	wp_enqueue_script( 'rwps-shortcodes' );
+	wp_localize_script( 'rwps-shortcodes', 'btn' . $instance, $styles );
 
 	$wraps = array();
 	if ( !empty( $atts['width'] ) ) $wraps['width'] = $atts['width'] . 'px';

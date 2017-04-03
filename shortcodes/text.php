@@ -164,8 +164,8 @@ function rwps_custom_text_shortcode( $atts, $content = null ) {
 		// $icon_styles['position'] = 'relative';
 	}
 
-	wp_enqueue_script( 'rwps-shorcodes' );
-	wp_localize_script( 'rwps-shorcodes', 'text' . $instance, $styles );
+	wp_enqueue_script( 'rwps-shortcodes' );
+	wp_localize_script( 'rwps-shortcodes', 'text' . $instance, $styles );
 
 	$attributes = array(
 		'class' => esc_attr( implode( ' ', $classes ) ),
