@@ -47,9 +47,8 @@ class RecommendWP_Shortcodes {
             wp_register_style( 'rwp-shortcodes', plugin_dir_url( __FILE__ ) . 'css/shortcode.css' );
             wp_enqueue_style( 'rwp-shortcodes' );
 
-            // Vendor JS
-            wp_register_script( 'rwps-vendor-js', plugin_dir_url( __FILE__ ) . 'js/vendor.min.js', array( 'jquery' ), null, true );
-            wp_enqueue_script( 'rwps-vendor-js' );
+            // Vein JS
+            wp_register_script( 'rwps-vein-js', plugin_dir_url( __FILE__ ) . 'js/vein.min.js', array( 'jquery' ), null, true );
 
             // Shortcode JS
             wp_register_script( 'rwps-shortcodes', plugin_dir_url( __FILE__ ) . 'js/shortcode.js', array( 'jquery' ), null, true );
