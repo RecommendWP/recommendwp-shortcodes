@@ -79,7 +79,6 @@
 
 		function boxInstance(instance) {
 			var box = window['box' + instance];
-			// console.log(box);
 
 			var fontSize = box.fontSize,
 				padding= box.padding,
