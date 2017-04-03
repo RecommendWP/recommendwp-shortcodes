@@ -210,7 +210,8 @@ function rwps_custom_button_shortcode( $atts, $content = null ) {
 	if ( $atts['size'] >= 24 ) {
 		$styles['tabletSize'] = ($atts['size'] - $atts['size']/4) . 'px';
 	}
-
+	
+	wp_enqueue_script( 'rwps-vein-js' );
 	wp_enqueue_script( 'rwps-shortcodes' );
 	wp_localize_script( 'rwps-shortcodes', 'btn' . $instance, $styles );
 

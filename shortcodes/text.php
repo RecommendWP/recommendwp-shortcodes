@@ -164,6 +164,7 @@ function rwps_custom_text_shortcode( $atts, $content = null ) {
 		// $icon_styles['position'] = 'relative';
 	}
 
+	wp_enqueue_script( 'rwps-vein-js' );
 	wp_enqueue_script( 'rwps-shortcodes' );
 	wp_localize_script( 'rwps-shortcodes', 'text' . $instance, $styles );
 
