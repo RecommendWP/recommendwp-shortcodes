@@ -11,10 +11,12 @@ var gulp = require('gulp'),
     prettify = require('gulp-jsbeautifier'),
     uglify = require('gulp-uglify'),
     concatcss = require('gulp-concat-css'),
+    foreach = require('gulp-flatmap'),
+    runSequence = require('run-sequence'),
     del = require('del');
 
 // CSS
-gulp.task('source:css', function(){
+gulp.task('styles', function(){
     return gulp.src('scss/shortcode.scss')
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
@@ -23,38 +25,43 @@ gulp.task('source:css', function(){
         .pipe(gulp.dest('temp/css'))
         .pipe(rename('shortcode.css'))
         .pipe(gulp.dest('css'))
-        .pipe(notify({ message: 'Source styles task complete' }));
+        .pipe(notify({ message: 'Styles task complete' }));
 } );
 
 // Vendor JS
-gulp.task('vendor:js', function(){
+gulp.task('scripts', function(){
     return gulp.src([
-        'bower_components/veinjs/vein.js',
-        'bower_components/owl.carousel/dist/owl.carousel.js'
+        'bower_components/veinjs/vein.js'
     ])
-    .pipe(concat('vendor.js'))
+    .pipe(foreach(function (stream, file) {
+        return stream
+            .pipe(uglify())
+            .pipe(rename({ suffix: '.min' }))
+    }))
     .pipe(gulp.dest('temp/js'))
-    .pipe(rename({suffix: '.min'}))
-    .pipe(uglify())
     .pipe(gulp.dest('js'))
-    .pipe(notify({ message: 'Vendor scripts task complete' }));
+    .pipe(notify({ message: 'Scripts task complete' }));
 });
 
 // Clean temp folder
-gulp.task('clean:temp', function(){
+gulp.task('clean', function(){
     return gulp.src('temp/*')
     .pipe(vinylpaths(del))
 });
 
 // Default task
-gulp.task('default', ['clean:temp'], function() {
-    gulp.start('source:css', 'watch');
-    gulp.start('vendor:js', 'watch');
+gulp.task('default', function() {
+    // gulp.start('styles', 'lint', 'scripts', 'watch');
+    runSequence(
+        'clean',
+        ['styles', 'scripts'],
+        'watch'
+    );
 });
 
 // Watch
 gulp.task('watch', function() {
     // Watch .scss files
-    gulp.watch(['scss/*.scss', 'sass/**/*.scss'], ['source:css']);
-    gulp.watch(['js/vendor/*.js'], ['vendor:js']);
+    gulp.watch(['scss/*.scss', 'sass/**/*.scss'], ['styles']);
+    gulp.watch(['js/vendor/*.js'], ['scripts']);
 });
