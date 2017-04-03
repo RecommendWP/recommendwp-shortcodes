@@ -94,7 +94,7 @@ function rwps_custom_address_shortcode( $atts, $content = null ) {
         <?php echo $atts['locality'] ? '<span itemprop="addressLocality">'.$atts['locality'].'</span>, ' : ''; ?>
         <?php echo $atts['region'] ? '<span itemprop="addressRegion">'.$atts['region'].'</span> ' : ''; ?>
         <?php echo $atts['postal'] ? '<span itemprop="postalCode">'.$atts['postal'].'</span><br>' : ''; ?>
-        <?php echo $atts['country'] ? '<span itemprop="addressCountry">$atts['country']</span>' : ''; ?> 
+        <?php echo $atts['country'] ? '<span itemprop="addressCountry">'.$atts['country'].'</span>' : ''; ?> 
     </div>
 
 	<?php $output = ob_get_clean();
