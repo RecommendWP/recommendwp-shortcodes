@@ -5,6 +5,7 @@ Description: A collection of shortcodes for WordPress built using the Shortcodes
 Version: 1.0.0
 Author: RecommendWP
 Author URI: http://www.recommendwp.com
+Bitbucket Plugin URI: https://bitbucket.org/webdevsuperfast/recommendwp-shortcodes
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 */
@@ -51,7 +52,7 @@ class RecommendWP_Shortcodes {
             wp_enqueue_script( 'rwps-vendor-js' );
 
             // Shortcode JS
-            wp_register_script( 'rwps-shorcodes', plugin_dir_url( __FILE__ ) . 'js/shortcode.js', array( 'jquery' ), null, true );
+            wp_register_script( 'rwps-shortcodes', plugin_dir_url( __FILE__ ) . 'js/shortcode.js', array( 'jquery' ), null, true );
         }
     }
 }
