@@ -60,10 +60,10 @@ function rwps_custom_telephone_shortcode( $atts, $content = null ) {
 
 	ob_start(); ?>
 
-	<p <?php foreach( $attributes as $name => $value ) echo $name . '="' . $value . '" ' ?>>
+	<span <?php foreach( $attributes as $name => $value ) echo $name . '="' . $value . '" ' ?>>
         <?php echo $atts['before'] ? $atts['before'] : ''; ?>
-        <span itemprop="telephone" content="<?php echo $atts['number']; ?>"><?php echo su_do_shortcode( $content, 's' ); ?></span>
-    </p>
+        <a itemprop="telephone" content="<?php echo $atts['number']; ?>" href="<?php echo $atts['number']; ?>"><?php echo su_do_shortcode( $content, 's' ); ?></a>
+    </span>
 
 	<?php $output = ob_get_clean();
 	return $output;
