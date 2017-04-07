@@ -62,7 +62,7 @@ function rwps_custom_telephone_shortcode( $atts, $content = null ) {
 
 	<span <?php foreach( $attributes as $name => $value ) echo $name . '="' . $value . '" ' ?>>
         <?php echo $atts['before'] ? $atts['before'] : ''; ?>
-        <a itemprop="telephone" content="<?php echo $atts['number']; ?>" href="<?php echo $atts['number']; ?>"><?php echo su_do_shortcode( $content, 's' ); ?></a>
+        <a itemprop="telephone" content="<?php echo $atts['number']; ?>" href="tel:<?php echo $atts['number']; ?>"><?php echo su_do_shortcode( $content, 's' ); ?></a>
     </span>
 
 	<?php $output = ob_get_clean();
