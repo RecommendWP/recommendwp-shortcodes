@@ -212,8 +212,8 @@ function rwps_custom_button_shortcode( $atts, $content = null ) {
 	}
 	
 	wp_enqueue_script( 'rwps-vein-js' );
-	wp_enqueue_script( 'rwps-shortcodes' );
-	wp_localize_script( 'rwps-shortcodes', 'btn' . $instance, $styles );
+	wp_enqueue_script( 'rwps-shortcodes-js' );
+	wp_localize_script( 'rwps-shortcodes-js', 'btn' . $instance, $styles );
 
 	$wraps = array();
 	if ( !empty( $atts['width'] ) ) $wraps['width'] = $atts['width'] . 'px';

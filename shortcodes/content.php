@@ -160,8 +160,8 @@ function rwps_custom_box_shortcode( $atts, $content = null ) {
 	}
 
 	wp_enqueue_script( 'rwps-vein-js' );
-	wp_enqueue_script( 'rwps-shortcodes' );
-	wp_localize_script( 'rwps-shortcodes', 'box' . $instance, $styles );
+	wp_enqueue_script( 'rwps-shortcodes-js' );
+	wp_localize_script( 'rwps-shortcodes-js', 'box' . $instance, $styles );
 
 	$attributes = array(
 		'id' => $selector,

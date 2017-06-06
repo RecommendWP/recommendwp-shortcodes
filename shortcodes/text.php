@@ -165,8 +165,8 @@ function rwps_custom_text_shortcode( $atts, $content = null ) {
 	}
 
 	wp_enqueue_script( 'rwps-vein-js' );
-	wp_enqueue_script( 'rwps-shortcodes' );
-	wp_localize_script( 'rwps-shortcodes', 'text' . $instance, $styles );
+	wp_enqueue_script( 'rwps-shortcodes-js' );
+	wp_localize_script( 'rwps-shortcodes-js', 'text' . $instance, $styles );
 
 	$attributes = array(
 		'class' => esc_attr( implode( ' ', $classes ) ),

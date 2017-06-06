@@ -103,8 +103,8 @@ function rwps_custom_countdown_shortcode( $atts, $content = null ) {
     );
 
 	wp_enqueue_script( 'rwps-countdown-js' );
-    wp_enqueue_script( 'rwps-shortcodes' );
-    wp_localize_script( 'rwps-shortcodes', 'countdown' . $instance, $attr );
+    wp_enqueue_script( 'rwps-shortcodes-js' );
+    wp_localize_script( 'rwps-shortcodes-js', 'countdown' . $instance, $attr );
 	
 	ob_start(); ?>
  
