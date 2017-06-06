@@ -31,6 +31,7 @@ gulp.task('styles', function(){
 // Vendor JS
 gulp.task('scripts', function(){
     return gulp.src([
+        'bower_components/jquery.countdown/dist/jquery.countdown.js',
         'bower_components/veinjs/vein.js'
     ])
     .pipe(foreach(function (stream, file) {
