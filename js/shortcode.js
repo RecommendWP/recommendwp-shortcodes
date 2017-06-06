@@ -1,6 +1,31 @@
 (function($){
 	$(document).ready(function(){
+		if($('.rwps-countdown').length > 0) {
+			$('.rwps-countdown').each(function(index){
+				var instance = $(this).data('instance');
+				countdownInstance(instance);
+			});
+			function countdownInstance(instance) {
+				var obj = window['countdown'+instance];
 
+				var id = obj.id,
+					year = obj.year,
+					month = obj.month,
+					day = obj.day,
+					hour = obj.hour,
+					minute = obj.minute;
+				$('#'+id).countdown( year+'/'+month+'/'+day+ ' ' +hour+':'+minute+':00', function(event) {
+					var $this = $(this).html(event.strftime(
+						''
+						+ '<span><span>%D</span> </br>day%!D</span> '
+						+ '<span><span>%H</span> </br>hour%!H</span> '
+						+ '<span><span>%M</span> </br>minute%!M</span> '
+						+ '<span><span>%S</span> </br>second%!S</span>'
+					));
+				});
+				console.log(year+'/'+month+'/'+day);
+			}
+		}
 		//* Button Shortcode
 		if($('.rwps_button').length > 0) {
 			$('.rwps_button').each(function(index){

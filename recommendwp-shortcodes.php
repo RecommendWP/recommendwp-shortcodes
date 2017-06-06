@@ -50,6 +50,8 @@ class RecommendWP_Shortcodes {
             // Vein JS
             wp_register_script( 'rwps-vein-js', plugin_dir_url( __FILE__ ) . 'js/vein.min.js', array( 'jquery' ), null, true );
 
+            wp_register_script( 'rwps-countdown-js', plugin_dir_url( __FILE__ ) . 'js/jquery.countdown.min.js', array( 'jquery' ), null, true );
+
             // Shortcode JS
             wp_register_script( 'rwps-shortcodes', plugin_dir_url( __FILE__ ) . 'js/shortcode.js', array( 'jquery' ), null, true );
         }
