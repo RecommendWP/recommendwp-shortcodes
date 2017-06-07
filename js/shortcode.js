@@ -23,7 +23,7 @@
 						+ '<span><span>%S</span> </br>second%!S</span>'
 					));
 				});
-				console.log(year+'/'+month+'/'+day);
+				// console.log(year+'/'+month+'/'+day);
 			}
 		}
 		//* Button Shortcode
