@@ -8,9 +8,7 @@ var gulp = require('gulp'),
     vinylpaths = require('vinyl-paths'),
     cleancss = require('gulp-clean-css'),
     cmq = require('gulp-combine-mq'),
-    prettify = require('gulp-jsbeautifier'),
     uglify = require('gulp-uglify'),
-    concatcss = require('gulp-concat-css'),
     foreach = require('gulp-flatmap'),
     runSequence = require('run-sequence'),
     del = require('del');
@@ -21,9 +19,9 @@ gulp.task('styles', function(){
         .pipe(sass.sync().on('error', sass.logError))
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 8', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(cmq())
-        .pipe(prettify())
         .pipe(gulp.dest('temp/css'))
         .pipe(rename('shortcode.css'))
+        .pipe(cleancss())
         .pipe(gulp.dest('css'))
         .pipe(notify({ message: 'Styles task complete' }));
 } );
@@ -31,6 +29,7 @@ gulp.task('styles', function(){
 // Vendor JS
 gulp.task('scripts', function(){
     return gulp.src([
+        'assets/js/sources/*.js',
         'bower_components/jquery.countdown/dist/jquery.countdown.js',
         'bower_components/veinjs/vein.js'
     ])
