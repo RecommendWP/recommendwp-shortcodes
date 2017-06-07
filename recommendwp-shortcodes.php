@@ -44,8 +44,8 @@ class RecommendWP_Shortcodes {
     public function rwps_enqueue_scripts() {
         if ( ! is_admin() ) {
             // Shortcode CSS
-            wp_register_style( 'rwp-shortcodes', plugin_dir_url( __FILE__ ) . 'css/shortcode.css' );
-            wp_enqueue_style( 'rwp-shortcodes' );
+            wp_register_style( 'rwps-shortcodes', plugin_dir_url( __FILE__ ) . 'css/shortcode.css' );
+            wp_enqueue_style( 'rwps-shortcodes' );
 
             // Vein JS
             wp_register_script( 'rwps-vein-js', plugin_dir_url( __FILE__ ) . 'js/vein.min.js', array( 'jquery' ), null, true );
