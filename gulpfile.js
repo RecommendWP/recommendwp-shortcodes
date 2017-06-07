@@ -29,7 +29,7 @@ gulp.task('styles', function(){
 // Vendor JS
 gulp.task('scripts', function(){
     return gulp.src([
-        'assets/js/sources/*.js',
+        'js/sources/*.js',
         'bower_components/jquery.countdown/dist/jquery.countdown.js',
         'bower_components/veinjs/vein.js'
     ])
@@ -63,5 +63,5 @@ gulp.task('default', function() {
 gulp.task('watch', function() {
     // Watch .scss files
     gulp.watch(['scss/*.scss', 'sass/**/*.scss'], ['styles']);
-    gulp.watch(['js/vendor/*.js'], ['scripts']);
+    gulp.watch(['js/sources/*.js'], ['scripts']);
 });
