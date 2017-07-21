@@ -2,7 +2,7 @@
 /*
 Plugin Name: RecommendWP Shortcodes
 Description: A collection of shortcodes for WordPress built using the Shortcodes Ultimate plugin API.
-Version: 1.1.3
+Version: 1.1.4
 Author: RecommendWP
 Author URI: http://www.recommendwp.com
 GitHub Plugin URI: https://github.com/RecommendWP/recommendwp-shortcodes
