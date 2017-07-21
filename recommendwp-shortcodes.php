@@ -5,7 +5,7 @@ Description: A collection of shortcodes for WordPress built using the Shortcodes
 Version: 1.1.3
 Author: RecommendWP
 Author URI: http://www.recommendwp.com
-Bitbucket Plugin URI: https://bitbucket.org/webdevsuperfast/recommendwp-shortcodes
+GitHub Plugin URI: https://github.com/RecommendWP/recommendwp-shortcodes
 License: GPL3
 License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 */
