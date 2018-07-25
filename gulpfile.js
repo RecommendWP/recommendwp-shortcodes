@@ -30,8 +30,8 @@ gulp.task('styles', function(){
 gulp.task('scripts', function(){
     return gulp.src([
         'js/sources/*.js',
-        'bower_components/jquery.countdown/dist/jquery.countdown.js',
-        'bower_components/veinjs/vein.js'
+        'node_modules/jquery-countdown/dist/jquery.countdown.js',
+        'node_modules/veinjs/vein.js'
     ])
     .pipe(foreach(function (stream, file) {
         return stream
