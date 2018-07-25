@@ -156,7 +156,7 @@ function rwps_custom_button_shortcode( $atts, $content = null ) {
 		'instance' => $instance,
 		'type' => ''
 	), $atts, 'button' );
-	// $hover = $atts['backgroundhover'] ? $atts['backgroundhover'] : color_luminance( $atts['background'], -0.1 );
+
 	if ( !empty( $atts['background_hover'] ) ) {
 		$hover = $atts['background_hover'];
 	} elseif ( empty( $atts['background_hover'] ) && !empty( $atts['background'] ) ) {
@@ -191,7 +191,6 @@ function rwps_custom_button_shortcode( $atts, $content = null ) {
 	$styles = array();
 	if ( !empty( $atts['size'] ) ) $styles['fontSize'] = $atts['size'] . 'px';
 	if ( !empty( $atts['padding'] ) ) $styles['padding'] = $atts['padding'] . 'px 0';
-	// if ( !empty( $atts['margin'] ) ) $styles['margin-bottom'] = $atts['margin'] . 'px';
 	if ( !empty( $atts['radius'] ) ) $styles['borderRadius'] = $atts['radius'] . 'px';
 	if ( !empty( $atts['border'] ) ) $styles['borderWidth'] = $atts['border'] . 'px';
 	if ( !empty( $atts['width'] ) ) $styles['width'] = $atts['width'] . 'px';
