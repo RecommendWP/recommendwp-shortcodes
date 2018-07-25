@@ -194,7 +194,13 @@ function rwps_custom_text_shortcode( $atts, $content = null ) {
 	?>
 	<<?php echo $atts['tag']; ?> <?php foreach( $attributes as $name => $value ) echo $name . '="' . $value . '" ' ?>>
 	<?php echo $atts['icon']; ?>
-	<?php echo su_do_shortcode( $content, 's' ); ?>
+	<?php 
+	if ( function_exists( 'su_do_shortcode' ) ) : 
+		echo su_do_shortcode( $content, 's' ); 
+	else :
+		echo do_shortcode( $content );
+	endif;
+	?>
 	</<?php echo $atts['tag']; ?>>
 	<?php do_action( 'rwps_text_after', $atts ); ?>
 

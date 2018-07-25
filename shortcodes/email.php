@@ -62,7 +62,15 @@ function rwps_custom_email_shortcode( $atts, $content = null ) {
 
 	<span <?php foreach( $attributes as $name => $value ) echo $name . '="' . $value . '" ' ?>>
         <?php echo $atts['before'] ? $atts['before'] : ''; ?>
-        <a itemprop="email" href="mailto:<?php echo $atts['address']; ?>"><?php echo su_do_shortcode( $content, 's' ); ?></a>
+        <a itemprop="email" href="mailto:<?php echo $atts['address']; ?>">
+			<?php 
+			if ( function_exists( 'su_do_shortcode' ) ) : 
+				echo su_do_shortcode( $content, 's' ); 
+			else :
+				echo do_shortcode( $content );
+			endif;
+			?>
+		</a>
     </span>
 
 	<?php $output = ob_get_clean();

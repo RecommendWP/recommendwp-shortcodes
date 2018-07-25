@@ -173,7 +173,13 @@ function rwps_custom_box_shortcode( $atts, $content = null ) {
 	ob_start(); ?>
 
 	<div <?php foreach( $attributes as $name => $value ) echo $name . '="' . $value . '" ' ?>>
-	<?php echo su_do_shortcode( $content, 's' ); ?>
+	<?php 
+	if ( function_exists( 'su_do_shortcode' ) ) :
+		echo su_do_shortcode( $content, 's' );
+	else :
+		echo do_shortcode( $content );
+	endif; 
+	?>
 	</div>
 	<?php
 	$output = ob_get_clean();

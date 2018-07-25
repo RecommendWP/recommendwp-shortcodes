@@ -84,7 +84,13 @@ function rwps_custom_hero_shortcode( $atts, $content = null ) {
 					<?php echo '<h2>'.$atts['title'].'</h2>'; ?>
 				</div>
 				<div class="hero-copy">
-					<?php echo su_do_shortcode( $content, 's' ); ?>	
+					<?php 
+					if ( function_exists( 'su_do_shortcode' ) ) :
+						echo su_do_shortcode( $content, 's' ); 
+					else :
+						echo do_shortcode( $content );
+					endif;	
+					?>	
 				</div>
 			</div>
 		</div>

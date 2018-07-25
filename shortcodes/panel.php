@@ -127,7 +127,13 @@ function rwps_custom_panel_shortcode( $atts, $content = null ) {
 	<?php echo $atts['title'] ? '<h4 class="panel-title">'.$atts['title'].'</h4>' : ''; ?>
 	
 	<div class="panel-content">
-		<?php echo su_do_shortcode( $content, 's' ); ?>
+		<?php 
+		if ( function_exists( 'su_do_shortcode' ) ) :
+			echo su_do_shortcode( $content, 's' ); 
+		else :
+			echo do_shortcode( $content );
+		endif;	
+		?>
 	</div>
 	
 	</div>
